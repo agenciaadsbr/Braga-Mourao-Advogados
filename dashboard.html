@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Leads — Braga &amp; Mourão Advogados</title>
+<meta name="theme-color" content="#0A0A0A">
+
+<script>
+window.CFG = {
+  url:  "https://qxhnjzyhtllmtdrcyygi.supabase.co",
+  key:  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4aG5qenlodGxsbXRkcmN5eWdpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyMzczNjgsImV4cCI6MjA5NzgxMzM2OH0.DWf4I_x9F--H7ZZHUt_n4V3B__Nlsf1jNZdUV0vNBLU",
+  // "Admin" na tela vira este e-mail por trás
+  usuario: "Admin",
+  email: "admin@braga-mourao.adsbr.internal",
+  cliente: "Braga & Mourão Advogados",
+  titulo: "BRAGA & MOURÃO"
+};
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  color-scheme:dark;
+  --bg:#0A0A0A; --card:#171717; --card2:#1F1F1F;
+  --linha:#2A2A2A; --linha2:#343434;
+  --txt:#EDEDED; --txt2:#A1A1A1; --txt3:#6E6E6E;
+  --ok:#4ADE80; --a:#60A5FA; --b:#F59E0B;
+}
+html,body{height:100%}
+body{
+  margin:0;background:var(--bg);color:var(--txt);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+.oculto{display:none!important}
+
+/* ---------- login ---------- */
+.login{min-height:100dvh;display:grid;place-items:center;padding:24px}
+.login .box{width:100%;max-width:340px;background:var(--card);border:1px solid var(--linha);border-radius:12px;padding:30px 26px}
+.login h1{font-size:15px;font-weight:600;letter-spacing:.14em;margin:0 0 4px}
+.login .sub{font-size:12.5px;color:var(--txt3);margin:0 0 24px}
+.campo{margin-bottom:14px}
+.campo label{display:block;font-size:11px;letter-spacing:.1em;color:var(--txt3);margin-bottom:6px;text-transform:uppercase}
+.campo input{width:100%;background:var(--bg);border:1px solid var(--linha2);border-radius:8px;padding:10px 12px;font-size:14px}
+.campo input:focus{outline:none;border-color:#4A4A4A}
+.acao{
+  width:100%;margin-top:8px;background:var(--txt);color:#0A0A0A;border:0;border-radius:8px;
+  padding:11px;font-size:13.5px;font-weight:600;cursor:pointer;transition:opacity .15s;
+}
+.acao:hover{opacity:.88}
+.acao[disabled]{opacity:.5;cursor:default}
+.erro{color:#F87171;font-size:12.5px;margin-top:12px;min-height:18px}
+
+/* ---------- app ---------- */
+.app{max-width:1220px;margin:0 auto;padding:26px 20px 60px}
+.topo{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px}
+.topo h1{font-size:17px;font-weight:600;letter-spacing:.1em;margin:0 0 3px}
+.topo .sub{font-size:13px;color:var(--txt3);margin:0}
+.sair{
+  background:transparent;border:1px solid var(--linha2);border-radius:7px;
+  padding:7px 14px;font-size:11.5px;letter-spacing:.1em;color:var(--txt2);cursor:pointer;transition:.15s;
+}
+.sair:hover{border-color:#4A4A4A;color:var(--txt)}
+
+.card{background:var(--card);border:1px solid var(--linha);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.card-topo{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 18px;border-bottom:1px solid var(--linha)}
+.card-topo h2{font-size:13.5px;font-weight:600;margin:0;letter-spacing:.01em}
+.card-corpo{padding:18px}
+
+.periodo{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.periodo span{font-size:10.5px;letter-spacing:.12em;color:var(--txt3)}
+.periodo input{
+  background:var(--bg);border:1px solid var(--linha2);border-radius:7px;
+  padding:5px 9px;font-size:12px;color:var(--txt2);
+}
+.periodo input:focus{outline:none;border-color:#4A4A4A}
+
+/* gráfico */
+.grafico{width:100%;height:260px;display:block}
+.grafico .grade{stroke:#242424;stroke-width:1}
+.grafico .eixo{fill:var(--txt3);font-size:10px}
+.grafico path{fill:none;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.grafico .p-vis{stroke:var(--a)}
+.grafico .p-lead{stroke:var(--ok)}
+.grafico .p-conv{stroke:var(--b);stroke-dasharray:4 3}
+.grafico circle{stroke:var(--card);stroke-width:1.5}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;padding-top:16px;margin-top:14px;border-top:1px solid var(--linha)}
+.legenda div{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--txt2)}
+.legenda i{width:9px;height:9px;border-radius:2px;display:block}
+.legenda b{color:var(--txt);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* tabelas */
+.rolagem{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{
+  text-align:left;font-size:10.5px;letter-spacing:.1em;color:var(--txt3);
+  font-weight:500;text-transform:uppercase;padding:0 14px 11px;white-space:nowrap;
+}
+td{padding:11px 14px;border-top:1px solid var(--linha);vertical-align:middle;white-space:nowrap}
+td.nome{font-weight:500;white-space:normal;min-width:150px}
+td.num{font-variant-numeric:tabular-nums;color:var(--txt2)}
+td.fraco{color:var(--txt3);font-size:12.5px}
+tbody tr:hover{background:#1C1C1C}
+.tag{display:inline-block;background:var(--card2);border:1px solid var(--linha2);border-radius:5px;padding:2px 8px;font-size:11.5px;color:var(--txt2)}
+.conv{font-variant-numeric:tabular-nums;color:var(--ok);font-weight:600}
+.zap{
+  display:inline-flex;align-items:center;gap:6px;
+  background:transparent;border:1px solid var(--linha2);border-radius:6px;
+  padding:5px 10px;font-size:11.5px;color:var(--txt2);text-decoration:none;cursor:pointer;transition:.15s;
+}
+.zap:hover{border-color:#3E6B4C;color:var(--ok)}
+.zap svg{width:12px;height:12px;fill:currentColor}
+.vazio{padding:34px 18px;text-align:center;color:var(--txt3);font-size:13px}
+
+@media(max-width:640px){
+  .app{padding:18px 14px 48px}
+  .card-corpo{padding:14px}
+  th,td{padding-left:10px;padding-right:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div class="login" id="tela-login">
+  <form class="box" id="form-login">
+    <h1>LEADS</h1>
+    <p class="sub" id="login-sub">Braga &amp; Mourão Advogados</p>
+    <div class="campo">
+      <label for="u">Usuário</label>
+      <input id="u" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+    </div>
+    <div class="campo">
+      <label for="s">Senha</label>
+      <input id="s" type="password" autocomplete="current-password" required>
+    </div>
+    <button class="acao" type="submit" id="btn-entrar">Entrar</button>
+    <p class="erro" id="login-erro"></p>
+  </form>
+</div>
+
+<!-- ================= PAINEL ================= -->
+<div class="app oculto" id="tela-app">
+  <header class="topo">
+    <div>
+      <h1 id="titulo">LEADS</h1>
+      <p class="sub" id="subtitulo">Carregando…</p>
+    </div>
+    <button class="sair" id="btn-sair">SAIR</button>
+  </header>
+
+  <section class="card">
+    <div class="card-topo">
+      <h2>Evolução diária</h2>
+      <div class="periodo">
+        <span>DE</span><input type="date" id="de">
+        <span>ATÉ</span><input type="date" id="ate">
+      </div>
+    </div>
+    <div class="card-corpo">
+      <div id="area-grafico"><div class="vazio">Carregando…</div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-topo"><h2>Conversão por LP</h2></div>
+    <div class="rolagem" id="area-lps"><div class="vazio">Carregando…</div></div>
+  </section>
+
+  <section class="card">
+    <div class="card-topo"><h2>Leads</h2></div>
+    <div class="rolagem" id="area-leads"><div class="vazio">Carregando…</div></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var C = window.CFG;
+  var CHAVE = "adsbr_dash_braga_mourao";
+  var sessao = null, VISITAS = [], LEADS = [];
+
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  }); };
+
+  /* ---------------- sessão ---------------- */
+  function guarda(s){
+    s.expira_em = Date.now() + (s.expires_in || 3600) * 1000 - 60000;
+    sessao = s;
+    try{ localStorage.setItem(CHAVE, JSON.stringify(s)); }catch(e){}
+  }
+  function recupera(){
+    try{
+      var s = JSON.parse(localStorage.getItem(CHAVE) || "null");
+      if(s && s.refresh_token){ sessao = s; return true; }
+    }catch(e){}
+    return false;
+  }
+  function limpa(){
+    sessao = null;
+    try{ localStorage.removeItem(CHAVE); }catch(e){}
+  }
+
+  function auth(corpo, tipo){
+    return fetch(C.url + "/auth/v1/token?grant_type=" + tipo, {
+      method:"POST",
+      headers:{ "apikey":C.key, "Content-Type":"application/json" },
+      body: JSON.stringify(corpo)
+    }).then(function(r){
+      return r.json().then(function(j){
+        if(!r.ok) throw new Error(j.error_description || j.msg || j.error || "falha na autenticação");
+        return j;
+      });
+    });
+  }
+
+  function tokenValido(){
+    if(!sessao) return Promise.reject(new Error("sem sessão"));
+    if(sessao.access_token && sessao.expira_em && Date.now() < sessao.expira_em){
+      return Promise.resolve(sessao.access_token);
+    }
+    return auth({ refresh_token: sessao.refresh_token }, "refresh_token")
+      .then(function(s){ guarda(s); return s.access_token; });
+  }
+
+  function consulta(caminho){
+    return tokenValido().then(function(tk){
+      return fetch(C.url + "/rest/v1/" + caminho, {
+        headers:{ "apikey":C.key, "Authorization":"Bearer " + tk }
+      });
+    }).then(function(r){
+      if(!r.ok) throw new Error("erro " + r.status + " ao consultar " + caminho);
+      return r.json();
+    });
+  }
+
+  /* ---------------- login ---------------- */
+  $("login-sub").textContent = C.cliente;
+
+  $("form-login").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var btn = $("btn-entrar"), err = $("login-erro");
+    var usuario = $("u").value.trim(), senha = $("s").value;
+
+    if(usuario.toLowerCase() !== String(C.usuario).toLowerCase()){
+      err.textContent = "Usuário ou senha incorretos.";
+      return;
+    }
+    btn.disabled = true; btn.textContent = "Entrando…"; err.textContent = "";
+
+    auth({ email: C.email, password: senha }, "password")
+      .then(function(s){ guarda(s); abrir(); })
+      .catch(function(){ err.textContent = "Usuário ou senha incorretos."; })
+      .then(function(){ btn.disabled = false; btn.textContent = "Entrar"; });
+  });
+
+  $("btn-sair").addEventListener("click", function(){
+    limpa();
+    $("tela-app").classList.add("oculto");
+    $("tela-login").classList.remove("oculto");
+    $("s").value = "";
+  });
+
+  /* ---------------- carga ---------------- */
+  function abrir(){
+    $("tela-login").classList.add("oculto");
+    $("tela-app").classList.remove("oculto");
+    $("titulo").textContent = "LEADS — " + C.titulo;
+
+    Promise.all([
+      consulta("lp_visits?select=site,created_at&order=created_at.asc&limit=20000"),
+      consulta("lp_leads?select=*&order=created_at.desc&limit=5000")
+    ]).then(function(res){
+      VISITAS = res[0] || [];
+      LEADS   = res[1] || [];
+      $("subtitulo").textContent = LEADS.length === 1
+        ? "1 lead registrado"
+        : LEADS.length + " leads registrados";
+      periodoPadrao();
+      desenhar();
+    }).catch(function(e){
+      if(String(e.message).indexOf("sem sessão") > -1 || String(e.message).indexOf("401") > -1){
+        limpa();
+        $("tela-app").classList.add("oculto");
+        $("tela-login").classList.remove("oculto");
+        return;
+      }
+      $("subtitulo").textContent = "Não foi possível carregar os dados.";
+      ["area-grafico","area-lps","area-leads"].forEach(function(id){
+        $(id).innerHTML = '<div class="vazio">' + esc(e.message) + "</div>";
+      });
+    });
+  }
+
+  /* ---------------- período ---------------- */
+  function iso(d){ return d.toISOString().slice(0,10); }
+
+  function periodoPadrao(){
+    var hoje = new Date();
+    var ini = new Date(hoje.getTime() - 29 * 864e5);
+    var datas = VISITAS.concat(LEADS).map(function(r){ return r.created_at.slice(0,10); }).sort();
+    if(datas.length && datas[0] > iso(ini)) ini = new Date(datas[0] + "T12:00:00");
+    $("de").value = iso(ini);
+    $("ate").value = iso(hoje);
+    $("de").addEventListener("change", desenhar);
+    $("ate").addEventListener("change", desenhar);
+  }
+
+  function noPeriodo(r){
+    var d = r.created_at.slice(0,10);
+    return d >= $("de").value && d <= $("ate").value;
+  }
+
+  /* ---------------- render ---------------- */
+  function desenhar(){
+    var vis = VISITAS.filter(noPeriodo);
+    var lea = LEADS.filter(noPeriodo);
+    grafico(vis, lea);
+    tabelaLPs(vis, lea);
+    tabelaLeads(lea);
+  }
+
+  function porDia(lista){
+    var m = {};
+    lista.forEach(function(r){
+      var d = r.created_at.slice(0,10);
+      m[d] = (m[d] || 0) + 1;
+    });
+    return m;
+  }
+
+  function grafico(vis, lea){
+    var alvo = $("area-grafico");
+    if(!vis.length && !lea.length){
+      alvo.innerHTML = '<div class="vazio">Nenhum dado encontrado no período</div>';
+      return;
+    }
+
+    var mv = porDia(vis), ml = porDia(lea);
+    var dias = [], d = new Date($("de").value + "T12:00:00"), fim = new Date($("ate").value + "T12:00:00");
+    while(d <= fim && dias.length < 370){ dias.push(iso(d)); d = new Date(d.getTime() + 864e5); }
+    if(!dias.length) dias = Object.keys(Object.assign({}, mv, ml)).sort();
+
+    var sv = dias.map(function(x){ return mv[x] || 0; });
+    var sl = dias.map(function(x){ return ml[x] || 0; });
+    var sc = dias.map(function(x,i){ return sv[i] ? (sl[i] / sv[i]) * 100 : 0; });
+
+    var W = 900, H = 240, ml_ = 34, mr = 34, mt = 14, mb = 26;
+    var iw = W - ml_ - mr, ih = H - mt - mb;
+    var maxA = Math.max(1, Math.max.apply(null, sv), Math.max.apply(null, sl));
+    var maxB = Math.max(10, Math.max.apply(null, sc));
+    var px = function(i){ return ml_ + (dias.length < 2 ? iw/2 : (i/(dias.length-1)) * iw); };
+    var pyA = function(v){ return mt + ih - (v/maxA) * ih; };
+    var pyB = function(v){ return mt + ih - (v/maxB) * ih; };
+    var linha = function(s, f){ return s.map(function(v,i){ return (i?"L":"M") + px(i).toFixed(1) + " " + f(v).toFixed(1); }).join(" "); };
+
+    var svg = '<svg class="grafico" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Evolução diária">';
+    for(var k = 0; k <= 4; k++){
+      var y = mt + (ih/4)*k;
+      svg += '<line class="grade" x1="'+ml_+'" x2="'+(W-mr)+'" y1="'+y.toFixed(1)+'" y2="'+y.toFixed(1)+'"/>';
+      svg += '<text class="eixo" x="'+(ml_-7)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end">'+Math.round(maxA - (maxA/4)*k)+'</text>';
+    }
+    svg += '<path class="p-vis" d="'  + linha(sv, pyA) + '"/>';
+    svg += '<path class="p-lead" d="' + linha(sl, pyA) + '"/>';
+    svg += '<path class="p-conv" d="' + linha(sc, pyB) + '"/>';
+    sl.forEach(function(v,i){
+      if(v > 0) svg += '<circle cx="'+px(i).toFixed(1)+'" cy="'+pyA(v).toFixed(1)+'" r="3" fill="var(--ok)"/>';
+    });
+    var passo = Math.max(1, Math.ceil(dias.length / 7));
+    dias.forEach(function(x,i){
+      if(i % passo === 0 || i === dias.length-1){
+        var p = x.slice(8,10) + "/" + x.slice(5,7);
+        svg += '<text class="eixo" x="'+px(i).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle">'+p+'</text>';
+      }
+    });
+    svg += "</svg>";
+
+    var tv = sv.reduce(function(a,b){return a+b;},0);
+    var tl = sl.reduce(function(a,b){return a+b;},0);
+    var tc = tv ? (tl/tv*100) : 0;
+
+    alvo.innerHTML = svg +
+      '<div class="legenda">' +
+        '<div><i style="background:var(--a)"></i>Visitas <b>'+tv+'</b></div>' +
+        '<div><i style="background:var(--ok)"></i>Cadastros <b>'+tl+'</b></div>' +
+        '<div><i style="background:var(--b)"></i>Taxa de conversão <b>'+tc.toFixed(1).replace(".",",")+'%</b></div>' +
+      '</div>';
+  }
+
+  function tabelaLPs(vis, lea){
+    var m = {};
+    vis.forEach(function(r){ (m[r.site] = m[r.site] || {v:0,l:0}).v++; });
+    lea.forEach(function(r){ (m[r.site] = m[r.site] || {v:0,l:0}).l++; });
+    var linhas = Object.keys(m).sort();
+
+    if(!linhas.length){
+      $("area-lps").innerHTML = '<div class="vazio">Nenhum dado encontrado no período</div>';
+      return;
+    }
+    var html = '<table><thead><tr><th>LP</th><th>Visitas</th><th>Leads</th><th>Conv.</th></tr></thead><tbody>';
+    linhas.forEach(function(s){
+      var o = m[s], c = o.v ? (o.l/o.v*100) : 0;
+      html += '<tr><td class="nome">'+esc(s)+'</td><td class="num">'+o.v+'</td><td class="num">'+o.l+'</td>'+
+              '<td class="conv">'+c.toFixed(1).replace(".",",")+'%</td></tr>';
+    });
+    $("area-lps").innerHTML = html + "</tbody></table>";
+  }
+
+  function fone(w){
+    var n = String(w || "").replace(/\D/g, "");
+    if(n.length === 11) return "(" + n.slice(0,2) + ") " + n.slice(2,7) + "-" + n.slice(7);
+    if(n.length === 10) return "(" + n.slice(0,2) + ") " + n.slice(2,6) + "-" + n.slice(6);
+    return w || "—";
+  }
+  function linkZap(lead){
+    var n = String(lead.whatsapp || "").replace(/\D/g, "");
+    if(!n) return "";
+    if(n.length <= 11) n = "55" + n;
+    var primeiro = String(lead.nome || "").trim().split(/\s+/)[0] || "";
+    var msg = "Olá, " + primeiro + ". Recebemos seu contato através da " + C.cliente +
+              " e gostaria de dar continuidade ao seu atendimento.";
+    return "https://wa.me/" + n + "?text=" + encodeURIComponent(msg);
+  }
+  function quando(s){
+    var d = new Date(s);
+    return d.toLocaleDateString("pt-BR") + " " +
+           d.toLocaleTimeString("pt-BR", {hour:"2-digit", minute:"2-digit"});
+  }
+
+  function tabelaLeads(lea){
+    if(!lea.length){
+      $("area-leads").innerHTML = '<div class="vazio">Nenhum lead encontrado no período</div>';
+      return;
+    }
+    var html = '<table><thead><tr><th>Nome</th><th>WhatsApp</th><th>LP</th><th>Origem</th><th>Data</th><th>Ação</th></tr></thead><tbody>';
+    lea.forEach(function(l){
+      var url = linkZap(l);
+      html += '<tr>' +
+        '<td class="nome">'+esc(l.nome)+'</td>' +
+        '<td class="num">'+esc(fone(l.whatsapp))+'</td>' +
+        '<td><span class="tag">'+esc(l.site)+'</span></td>' +
+        '<td class="fraco">'+esc(l.origem || "—")+'</td>' +
+        '<td class="fraco">'+esc(quando(l.created_at))+'</td>' +
+        '<td>' + (url
+          ? '<a class="zap" href="'+url+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.05 0C5.5 0 .16 5.34.157 11.89c0 2.1.547 4.15 1.588 5.95L.057 24l6.305-1.65a11.88 11.88 0 0 0 5.683 1.45h.005c6.554 0 11.89-5.34 11.893-11.9A11.82 11.82 0 0 0 12.05 0m6.99 16.9c-.248.69-1.435 1.33-2.006 1.41-.512.08-1.16.11-1.871-.12-.432-.13-.985-.32-1.694-.62-2.981-1.29-4.928-4.29-5.077-4.49-.148-.2-1.213-1.61-1.213-3.07 0-1.47.768-2.19 1.04-2.48.272-.3.594-.37.792-.37h.57c.182.01.427-.07.669.51.247.6.84 2.06.916 2.21.075.15.124.32.025.52-.1.2-.15.32-.298.5l-.446.52c-.148.15-.303.31-.13.61.173.29.77 1.27 1.653 2.06 1.135 1.01 2.093 1.32 2.39 1.47.297.15.471.13.644-.07.173-.2.743-.87.94-1.17.2-.29.397-.25.67-.15.272.1 1.733.82 2.03.97.297.15.495.22.57.35.074.12.074.72-.174 1.41"/></svg>WhatsApp</a>'
+          : '<span class="fraco">sem número</span>') + '</td>' +
+      '</tr>';
+    });
+    $("area-leads").innerHTML = html + "</tbody></table>";
+  }
+
+  /* ---------------- início ---------------- */
+  if(recupera()){
+    tokenValido().then(abrir).catch(function(){ limpa(); });
+  }
+})();
+</script>
+</body>
+</html>
