@@ -35,7 +35,7 @@ window.LP = {
   whatsapp: "5562999849181",
   mensagem: "Vim do Google e quero falar com um advogado especialista.",
   espera: 3000,   // milissegundos
-  voltar: "/"
+  voltar: "./"
 };
 </script>
 
@@ -98,7 +98,7 @@ p{color:rgba(255,255,255,.72);font-size:1.02rem;line-height:1.55;margin:0 0 28px
       Não abriu? Toque aqui
     </a>
 
-    <p class="rodape">Braga &amp; Mourão Advogados · Goiânia/GO<br><a id="voltar" href="/">Voltar para a página</a></p>
+    <p class="rodape">Braga &amp; Mourão Advogados · Goiânia/GO<br><a id="voltar" href="./">Voltar para a página</a></p>
   </div>
 
 <script>
@@ -115,7 +115,7 @@ p{color:rgba(255,255,255,.72);font-size:1.02rem;line-height:1.55;margin:0 0 28px
     document.getElementById("titulo").textContent = primeiro + ", abrindo o WhatsApp…";
     document.getElementById("texto").textContent = "Em instantes você fala com a equipe do Braga &amp; Mourão Advogados. Se quiser, é só contar o que aconteceu com seu benefício.";
   }
-  document.getElementById("voltar").href = LP.voltar || "/";
+  document.getElementById("voltar").href = LP.voltar || "./";
 
   var msg = LP.mensagem || "Olá! Vim pelo site.";
 

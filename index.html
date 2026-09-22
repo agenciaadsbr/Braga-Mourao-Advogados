@@ -34,8 +34,9 @@ window.LP = {
   // Mensagem que já vai escrita quando a pessoa cai no WhatsApp
   mensagem: "Vim do Google e quero falar com um advogado especialista.",
 
-  // Rota da página de redirecionamento (arquivo redirect.html no deploy)
-  rotaRedirect: "/redirect",
+  // Página de redirecionamento. Caminho relativo ao arquivo real, para funcionar
+  // em qualquer hospedagem e também se a LP ficar numa subpasta.
+  rotaRedirect: "redirect.html",
 
   // Identificador de origem — útil para saber de qual campanha veio o lead
   origem: "lp-previdenciario",
@@ -1058,7 +1059,7 @@ p:last-child{margin-bottom:0}
   <a class="btn cta" href="#contato"><svg aria-hidden="true"><use href="#i-zap"/></svg>Falar com a equipe</a>
 </div>
 
-<!-- ======== SAÍDA (fallback do /redirect) ======== -->
+<!-- ======== SAÍDA (plano B: só se redirect.html não existir, ex.: preview) ======== -->
 <div class="saida" id="saida" role="status" aria-live="polite">
   <div>
     <div class="anel" aria-hidden="true">
@@ -1313,12 +1314,12 @@ Object.assign(window.LP.fotos, {
     if(window.fbq) window.fbq("track","Lead");
 
     var qs = "?n=" + encodeURIComponent(lead.nome) + "&w=" + encodeURIComponent(lead.telefone) + "&o=" + encodeURIComponent(lead.origem);
-    var rota = (LP.rotaRedirect || "/redirect") + qs;
+    var rota = (LP.rotaRedirect || "redirect.html") + qs;
 
     // Se a rota /redirect existir no deploy, usa ela. Se não, faz a mesma
     // experiência aqui dentro (útil em preview e em hospedagem sem rota própria).
-    fetch(LP.rotaRedirect || "/redirect", {method:"HEAD"})
-      .then(function(r){ if(r.ok) location.href = rota; else inline(lead); })
+    fetch(LP.rotaRedirect || "redirect.html", {method:"HEAD", cache:"no-store"})
+      .then(function(r){ if(r.status !== 404) location.href = rota; else inline(lead); })
       .catch(function(){ inline(lead); });
   });
 
