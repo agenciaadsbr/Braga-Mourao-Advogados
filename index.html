@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18430900927"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18430900927');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Braga &amp; Mourão Advogados — Direito Previdenciário em Goiânia/GO</title>
@@ -20,10 +29,10 @@
 <script>
 window.LP = {
   // Número do WhatsApp Business, só dígitos, com 55 + DDD.  Ex: "5562999999999"
-  whatsapp: "",
+  whatsapp: "5562999849181",
 
   // Mensagem que já vai escrita quando a pessoa cai no WhatsApp
-  mensagem: "Olá! Vim pelo site e preciso de orientação sobre meu benefício do INSS.",
+  mensagem: "Vim do Google e quero falar com um advogado especialista.",
 
   // Rota da página de redirecionamento (arquivo redirect.html no deploy)
   rotaRedirect: "/redirect",
@@ -522,6 +531,7 @@ p:last-child{margin-bottom:0}
 
 /* ---------- CTA FINAL + FORM ---------- */
 .final{position:relative;background:var(--creme)}
+#contato{scroll-margin-top:64px}
 .final-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,5vw,76px);align-items:center}
 .final h2{margin-bottom:18px;max-width:16ch}
 .final .lead{max-width:40ch;margin-bottom:30px}
@@ -1025,7 +1035,7 @@ p:last-child{margin-bottom:0}
       <div>
         <h4>Contato</h4>
         <ul>
-          <li><a href="#contato">Falar com a equipe</a></li>
+          <li><a class="cta" href="#contato">Falar com a equipe</a></li>
           <li class="oculto" data-campo="li-insta-rod"><a data-campo="instagram" href="#" target="_blank" rel="noopener">Instagram</a></li>
           <li class="oculto" data-campo="li-google-rod"><a data-campo="google" href="#" target="_blank" rel="noopener">Google Meu Negócio</a></li>
         </ul>
@@ -1039,7 +1049,7 @@ p:last-child{margin-bottom:0}
 </footer>
 
 <!-- ======== BOTÃO FLUTUANTE ======== -->
-<a class="zap-flut" id="zap-flut" href="#contato" aria-label="Falar com a equipe pelo WhatsApp">
+<a class="zap-flut cta" id="zap-flut" href="#contato" aria-label="Falar com a equipe pelo WhatsApp">
   <svg aria-hidden="true"><use href="#i-zap"/></svg><b>Falar no WhatsApp</b>
 </a>
 
@@ -1180,25 +1190,25 @@ Object.assign(window.LP.fotos, {
     flut.classList.toggle("vis", y > 380 && longeDoForm);
   }
 
-  /* botão flutuante vai direto para a rota /redirect, sem passar pelo formulário */
-  flut.setAttribute("href", (LP.rotaRedirect || "/redirect") + "?o=" + encodeURIComponent((LP.origem || "lp") + "-flutuante"));
-  flut.addEventListener("click", function(ev){
-    // se a rota não existir (preview, hospedagem sem rota própria), faz aqui mesmo
-    ev.preventDefault();
-    var destino = flut.getAttribute("href");
-    fetch(LP.rotaRedirect || "/redirect", {method:"HEAD"})
-      .then(function(r){ if(r.ok) location.href = destino; else inline({nome:""}); })
-      .catch(function(){ inline({nome:""}); });
+  /* ---------- todos os botões levam ao formulário ----------
+     o envio do formulário é que segue para /redirect → 3s → WhatsApp */
+  document.querySelectorAll("a.cta").forEach(function(a){
+    a.addEventListener("click", function(ev){
+      ev.preventDefault();
+      var alvo = document.getElementById("contato");
+      alvo.scrollIntoView({behavior: reduz ? "auto" : "smooth", block: "start"});
+      if(history.replaceState) history.replaceState(null, "", "#contato");
+      // no desktop já deixa o cursor no campo nome; no celular não,
+      // pra não abrir o teclado por cima da rolagem
+      setTimeout(function(){
+        var n = document.getElementById("nome");
+        if(n && window.innerWidth > 760) n.focus({preventScroll:true});
+      }, reduz ? 0 : 650);
+    });
   });
   window.addEventListener("scroll", aoRolar, {passive:true});
   aoRolar();
 
-  /* ---------- foco no formulário ao clicar num CTA ---------- */
-  document.querySelectorAll("a.cta").forEach(function(a){
-    a.addEventListener("click", function(){
-      setTimeout(function(){ var n = document.getElementById("nome"); if(n && window.innerWidth > 760) n.focus({preventScroll:true}); }, 700);
-    });
-  });
 
   /* ---------- conversa de exemplo ---------- */
   var roteiro = [
@@ -1314,7 +1324,6 @@ Object.assign(window.LP.fotos, {
 
   function linkZap(lead){
     var msg = (LP.mensagem || "Olá! Vim pelo site.");
-    if(lead && lead.nome) msg = "Olá! Meu nome é " + lead.nome + ". " + msg.replace(/^Olá!\s*/,"");
     if(!LP.whatsapp) return "";
     return "https://wa.me/" + LP.whatsapp + "?text=" + encodeURIComponent(msg);
   }

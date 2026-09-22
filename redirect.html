@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18430900927"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18430900927');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -15,8 +24,8 @@
      ============================================================ -->
 <script>
 window.LP = {
-  whatsapp: "",   // ex: "5562999999999"
-  mensagem: "Olá! Vim pelo site e preciso de orientação sobre meu benefício do INSS.",
+  whatsapp: "5562999849181",
+  mensagem: "Vim do Google e quero falar com um advogado especialista.",
   espera: 3000,   // milissegundos
   voltar: "/"
 };
@@ -100,8 +109,6 @@ p{color:rgba(255,255,255,.72);font-size:1.02rem;line-height:1.55;margin:0 0 28px
   document.getElementById("voltar").href = LP.voltar || "/";
 
   var msg = LP.mensagem || "Olá! Vim pelo site.";
-  if(nome) msg = "Olá! Meu nome é " + nome + ". " + msg.replace(/^Olá!\s*/, "");
-  if(origem) msg += "  (" + origem + ")";
 
   var url = LP.whatsapp ? ("https://wa.me/" + LP.whatsapp + "?text=" + encodeURIComponent(msg)) : "";
   var botao = document.getElementById("agora");
